@@ -8,8 +8,8 @@ class Behavior:
     # Obs: ikke kommunisere direkte med andre behaviors
 
 
-    def __init__(self):
-        self.bbcon = BBCON() # pointer to the controller that uses this behavior
+    def __init__(self, bbcon):
+        self.bbcon = bbcon # pointer to the controller that uses this behavior
         self.sensobs = [] # a list of all sensobs that this behavior uses
         self.motor_recommendations = [] # a list of recommendations, one per motob
         self.active_flag = None # boolean variable indicating that the behavior is currently active or inactive

@@ -31,11 +31,13 @@ class Bbcon:
     def run_one_timestep(self):
         # Run update method in all sensob objects
         def update_sensobs():
-            pass
+            for sensob in self.sensobs:
+                sensob.update()
 
         # Run update method in all behavior objects
         def update_behaviors():
-            pass
+            for behavior in self.behaviors:
+                behavior.update()
 
         # Invoke the arbitrator with arbitrator.choose_action
         # To be implemented...
@@ -49,4 +51,5 @@ class Bbcon:
 
         # Run reset method in all sensob objects
         def reset_sensobs():
-            pass
+            for sensob in self.sensobs:
+                sensob.reset()
