@@ -12,7 +12,6 @@ class motob:
         self.value.append(motor_rec)
 
     def operationalize(self):
-        turning = {}
         if self.value[0] == "B":
             if self.value[1] == 180:
                 self.motor.backward(0.5, 1)
@@ -46,3 +45,5 @@ class motob:
             elif self.value[1] == 45:
                 self.motor.right(0.5, 0.375)
 
+        elif self.value[0] == "F":
+            self.motor.forward(0.5, 1)
