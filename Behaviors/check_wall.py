@@ -3,10 +3,16 @@ from PIL import Image
 
 class CheckWall(behavior.Behavior):
     def consider_activation(self):
-        pass
+        if self.bbcon.get_wall():
+            self.bbcon.activate_behavior(self)
+            return True
+        return False
 
     def consider_deactivation(self):
-        pass
+        if not self.bbcon.get_wall():
+            self.bbcon.deactivate_behavior(self)
+            return True
+        return False
 
     def sense_and_act(self):
         colors = self.get_main_color(self.sensob.get_value())
