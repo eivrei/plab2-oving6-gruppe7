@@ -2,8 +2,6 @@
 IP: 129.241.162.97
 MAC: b8:27:eb:c6:03:8d
 DNS: rpi-162-97
-<<<<<<< HEAD
-
 
 
 Behaviors:
@@ -19,5 +17,4 @@ Behaviors:
 
     - Follow line
         - Pri = 4
-=======
->>>>>>> origin/master
+
