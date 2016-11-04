@@ -40,7 +40,7 @@ class motob:
                 self.motor.right(0.5, 1.5)
 
             elif self.value[1] == 90:
-                self.motor.right(0.5, 90)
+                self.motor.right(0.5, 90)x
 
             elif self.value[1] == 45:
                 self.motor.right(0.5, 0.375)
