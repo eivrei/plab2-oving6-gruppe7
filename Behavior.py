@@ -31,8 +31,7 @@ class Behavior:
 
     def update(self):
         # 1) update the activity status (different implementation for the behaviors)
-        self.active_flag = self.consider_deactivation() if self.active_flag else self.consider_activation()
-
+        self.active_flag = not self.consider_deactivation() if self.active_flag else self.consider_activation()
         # 2) call sense_and_act
         self.sense_and_act()
         # 3) update the behavior's weight (
