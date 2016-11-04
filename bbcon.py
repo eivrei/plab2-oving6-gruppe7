@@ -6,6 +6,7 @@ class Bbcon:
         self.sensobs = set()
         self.motobs = set()
         self.arbitrator = None
+        self.wall = False
 
     # Add behavior to self.behaviors
     def add_behavior(self, behavior):
@@ -27,6 +28,9 @@ class Bbcon:
     def behavior_is_active(self, behavior):
         return behavior in self.active_behaviors
 
+    def get_wall(self):
+        return self.wall
+
     # Main function of the bbcon object. Does all the heavy lifting
     def run_one_timestep(self):
         # Run update method in all sensob objects
@@ -41,6 +45,8 @@ class Bbcon:
 
         # Invoke the arbitrator with arbitrator.choose_action
         # To be implemented...
+        # If motor recommendation is ['S',0], set self.wall = True
+        # else self.wall = False
 
         # Run update method in all motob objects
         def update_motobs():
