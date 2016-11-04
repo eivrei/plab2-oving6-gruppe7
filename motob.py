@@ -1,7 +1,7 @@
 from basic_robot.motors import Motors
 
 
-class motob:
+class Motob:
 
 
     def __init__(self):

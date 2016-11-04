@@ -4,7 +4,7 @@ class Bbcon:
         self.behaviors = set()
         self.active_behaviors = set()
         self.sensobs = set()
-        self.motobs = set()
+        self.motob = None
         self.arbitrator = None
         self.wall = False
 
@@ -44,18 +44,30 @@ class Bbcon:
                 behavior.update()
 
         # Invoke the arbitrator with arbitrator.choose_action
-        # To be implemented...
         # If motor recommendation is ['S',0], set self.wall = True
         # else self.wall = False
+        def update_arbitrator():
+            motor_recommendation, halt_request = self.arbitrator.update()
+            if halt_request:
+                # Quit program, dance maybe?
+                return False
+            self.wall = True if motor_recommendation[0] == 'S' else self.wall = False
+            update_motobs(motor_recommendation)
 
         # Run update method in all motob objects
-        def update_motobs():
-            pass
+        def update_motobs(motor_recommendation):
+            self.motob.update(motor_recommendation)
+            reset_sensobs()
 
         # Wait while robot is moving for a short period
-        # To be implemented...
+        # To be implemented?
 
         # Run reset method in all sensob objects
         def reset_sensobs():
             for sensob in self.sensobs:
                 sensob.reset()
+
+        update_sensobs()
+        update_behaviors()
+        update_arbitrator()
+        return True

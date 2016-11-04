@@ -1,6 +1,11 @@
 import behavior
 
+
 class FollowLine(behavior.Behavior):
+    def __init__(self, bbcon, priority):
+        super().__init__(bbcon, priority)
+        self.match_degree = 1
+
     def sense_and_act(self):
         value = self.sensob.get_value()
         self.match_degree = 0.9
