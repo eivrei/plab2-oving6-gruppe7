@@ -1,19 +1,17 @@
 
 class Behavior:
-
     # -------- Hovedoppgave --------
     # consider activation or deactivation
     # produce motor recommendations
     # update the match degree
     # Obs: ikke kommunisere direkte med andre behaviors
 
-
     def __init__(self, bbcon, priority):
         self.bbcon = bbcon # pointer to the controller that uses this behavior
         self.sensob = None # a list of all sensobs that this behavior uses
         self.motor_recommendation = [] # a list of recommendations, one per motob
         self.active_flag = True # boolean variable indicating that the behavior is currently active or inactive
-        self.halt_request = None # some behaviors can request the robot to completely halt activity (and thus end the run)
+        self.halt_request = False # some behaviors can request the robot to completely halt activity (and thus end the run)
         self.priority = priority # a static, pre-defined value indicating the importance of this behavior
         self.match_degree = 0 # in range (0,1)
         self.weight = self.priority * self.match_degree
