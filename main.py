@@ -4,10 +4,10 @@ from basic_robot import camera, irproximity_sensor, reflectance_sensors, ultraso
 
 # Initialize all objects
 bb = bbcon.Bbcon()
-cw = check_wall.CheckWall(bb, 1)
-fc = front_collision.FrontCollision(bb, 2)
-sc = side_collision.SideCollision(bb, 3)
-fl = follow_line.FollowLine(bb, 4)
+cw = check_wall.CheckWall(bb, 4)
+fc = front_collision.FrontCollision(bb, 3)
+sc = side_collision.SideCollision(bb, 2)
+fl = follow_line.FollowLine(bb, 1)
 a = arbitrator.Arbitrator(bb)
 cam = sensob.Sensob()
 ir = sensob.Sensob()
@@ -28,7 +28,7 @@ sc.set_sensob(ir)
 fl.set_sensob(rs)
 
 # Add stuff to bbcon object
-bb.add_sensob([cam, ir, ultrasonic, rs])
+bb.add_sensob([cam, ir, ultrasound, rs])
 bb.add_behavior([cw, fc, sc, fl])
 bb.arbitrator = a
 bb.motob = motor

@@ -4,8 +4,7 @@ import behavior
 class CheckWall(behavior.Behavior):
     def consider_activation(self):
         if self.bbcon.get_wall():
-            self.bbcon.activate_behavior(self)
-            return True
+            return super().consider_activation()
         return False
 
     def consider_deactivation(self):
@@ -16,7 +15,8 @@ class CheckWall(behavior.Behavior):
 
     def sense_and_act(self):
         colors = self.get_main_color(self.sensob.get_value())
-        if colors[1] > 160 and colors[0] < 100 and colors[2] < 100:
+        print(colors)
+        if colors[1] > 130 and colors[0] < 110 and colors[2] < 60:
             self.halt_request = True
             self.motor_recommendation = ['S', 0]
         else:
@@ -24,7 +24,7 @@ class CheckWall(behavior.Behavior):
         self.match_degree = 1
 
     def get_main_color(self, img):
-        colors = img.getcolors(256) #put a higher value if there are many colors in your image
+        colors = img.getcolors(10000) #put a higher value if there are many colors in your image
         max_occurence, most_present = 0, 0
         try:
             for c in colors:

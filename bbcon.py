@@ -1,20 +1,20 @@
 
 class Bbcon:
     def __init__(self):
-        self.behaviors = set()
+        self.behaviors = []
         self.active_behaviors = set()
-        self.sensobs = set()
+        self.sensobs = []
         self.motob = None
         self.arbitrator = None
         self.wall = False
 
     # Add behavior to self.behaviors
     def add_behavior(self, behavior):
-        self.behaviors.add(behavior)
+        self.behaviors.extend(behavior)
 
     # Add sensob to self.sensobs
     def add_sensob(self, sensob):
-        self.sensobs.add(sensob)
+        self.sensobs.extend(sensob)
 
     # Add behavior to active_behaviors
     def activate_behavior(self, behavior):
@@ -22,7 +22,8 @@ class Bbcon:
 
     # Remove behavior from active_behaviors
     def deactivate_behavior(self, behavior):
-        self.active_behaviors.remove(behavior)
+        if behavior in self.active_behaviors:
+            self.active_behaviors.remove(behavior)
 
     # Return if behavior is active
     def behavior_is_active(self, behavior):
@@ -47,15 +48,18 @@ class Bbcon:
         # If motor recommendation is ['S',0], set self.wall = True
         # else self.wall = False
         def update_arbitrator():
-            motor_recommendation, halt_request = self.arbitrator.update()
+            motor_recommendation, halt_request = self.arbitrator.choose_action()
             if halt_request:
                 # Quit program, dance maybe?
+                print("finito")
                 return False
-            self.wall = True if motor_recommendation[0] == 'S' else self.wall = False
+            self.wall = True if motor_recommendation[0] == 'T' else False
             update_motobs(motor_recommendation)
+            return True
 
         # Run update method in all motob objects
         def update_motobs(motor_recommendation):
+            print(motor_recommendation)
             self.motob.update(motor_recommendation)
             reset_sensobs()
 
@@ -69,5 +73,4 @@ class Bbcon:
 
         update_sensobs()
         update_behaviors()
-        update_arbitrator()
-        return True
+        return update_arbitrator()

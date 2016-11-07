@@ -1,23 +1,21 @@
 
 class Sensob:
     def __init__(self):
-        self.sensor_list = []
-        self.value_list = []
+        self.sensor = None
+        self.value = None
 
     def update(self):
-        for sensor in self.sensor_list:
-            sensor.update()
-            self.value_list.append(sensor.get_value())
+        self.sensor.update()
+        self.value = self.sensor.get_value()
 
-    def reset_sensors(self):
-        for sensor in self.sensor_list:
-            sensor.reset()
+    def reset(self):
+        self.sensor.reset()
 
     def add_sensor(self, sensor):
-        self.sensor_list.append(sensor)
+        self.sensor = sensor
 
-    def get_sensorlist(self):
-        return self.sensor_list
+    def get_sensor(self):
+        return self.sensor
 
-    def get_valuelist(self):
-        return self.get_valuelist
+    def get_value(self):
+        return self.value

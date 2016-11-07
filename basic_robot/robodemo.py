@@ -53,13 +53,13 @@ def random_step(motors,speed=0.25,duration=1):
 # It then rotates around, snapping pictures as it goes.  It then pastes all the pictures together into a
 # panoramo view, many of which may be created per "vacation".
 
-def tourist(steps=25,shots=5,speed=.25):
+def tourist(steps=25,shots=9,speed=.25):
     ZumoButton().wait_for_press()
     rs = ReflectanceSensors(); m = Motors(); c = Camera()
     for i in range(steps):
         random_step(m,speed=speed,duration=0.5)
         vals = rs.update()
-        if sum(vals) < 1:  # very dark area
+        if sum(vals) < 150:  # very dark area
             im = shoot_panorama(c,m,shots)
             im.dump_image('vacation_pic'+str(i)+'.jpeg')
 
