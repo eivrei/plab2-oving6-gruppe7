@@ -2,8 +2,6 @@ from basic_robot.motors import Motors
 
 
 class Motob:
-
-
     def __init__(self):
         self.motor = Motors()
         self.value = []

@@ -1,5 +1,5 @@
 import behavior
-from PIL import Image
+
 
 class CheckWall(behavior.Behavior):
     def consider_activation(self):
