@@ -36,8 +36,9 @@ class Bbcon:
     def run_one_timestep(self):
         # Run update method in all sensob objects
         def update_sensobs():
-            for sensob in self.sensobs:
-                sensob.update()
+            for behavior in self.behaviors:
+                if behavior.consider_activation():
+                    behavior.sensob.update()
 
         # Run update method in all behavior objects
         def update_behaviors():
@@ -53,7 +54,7 @@ class Bbcon:
                 # Quit program, dance maybe?
                 print("finito")
                 return False
-            self.wall = True if motor_recommendation[0] == 'T' else False
+            self.wall = True if motor_recommendation[0] == 'S' else False
             update_motobs(motor_recommendation)
             return True
 

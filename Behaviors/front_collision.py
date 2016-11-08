@@ -8,6 +8,6 @@ class FrontCollision(behavior.Behavior):
         self.match_degree = (100 - value)/100 if value <= 100 else 0.01
         print("Avstand: ", value)
         if value < 15:
-            self.motor_recommendation = ['T', 0]
+            self.motor_recommendation = ['S', 0]
         else:
             self.motor_recommendation = ['F', 0]

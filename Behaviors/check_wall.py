@@ -16,11 +16,11 @@ class CheckWall(behavior.Behavior):
     def sense_and_act(self):
         colors = self.get_main_color(self.sensob.get_value())
         print(colors)
-        if colors[1] > 130 and colors[0] < 110 and colors[2] < 60:
+        if colors[1] > 140 and colors[0] < 100 and colors[2] < 60:
             self.halt_request = True
             self.motor_recommendation = ['S', 0]
         else:
-            self.motor_recommendation = ['L', 180]
+            self.motor_recommendation = ['T', 160]
         self.match_degree = 1
 
     def get_main_color(self, img):
