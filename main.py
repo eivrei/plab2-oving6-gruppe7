@@ -1,6 +1,6 @@
 import bbcon, arbitrator, sensob, motob
 from Behaviors import check_wall, follow_line, front_collision, side_collision
-from basic_robot import camera, irproximity_sensor, reflectance_sensors, ultrasonic, zumo_button
+from basic_robot import camera, irproximity_sensor, reflectance_sensors, ultrasonic, zumo_button, motors
 
 # Initialize all objects
 bb = bbcon.Bbcon()
@@ -23,13 +23,13 @@ rs.add_sensor(reflectance_sensors.ReflectanceSensors())
 
 # Add sensobs to behaviors
 cw.set_sensob(cam)
-# fc.set_sensob(us)
+fc.set_sensob(us)
 sc.set_sensob(ir)
 fl.set_sensob(rs)
 
 # Add stuff to bbcon object
-bb.add_sensob([cam, ir, us, rs])
-# bb.add_behavior([cw, fc, sc, fl])
+# bb.add_sensob([cam, ir, us, rs])
+bb.add_behavior([cw, fc, sc, fl])
 bb.add_behavior([cw, sc, fl])
 bb.arbitrator = a
 bb.motob = motor
@@ -37,3 +37,11 @@ bb.motob = motor
 zumo_button.ZumoButton().wait_for_press()
 while bb.run_one_timestep():
     continue
+m = motors.Motors()
+m.forward(.5,1)
+m.backward(.5,1)
+m.right(.7,2)
+m.left(.7,2)
+m.backward(.5,0.5)
+m.set_value([.6,.3],2)
+m.set_value([-.6,-.3],2)

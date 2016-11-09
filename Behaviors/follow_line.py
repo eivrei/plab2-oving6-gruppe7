@@ -15,14 +15,14 @@ class FollowLine(behavior.Behavior):
             self.motor_recommendation = ['F', 0]
             self.match_degree = 0.1
         elif value[0] < 0.2:
-            self.motor_recommendation = ['L', 15]
+            self.motor_recommendation = ['L', 17]
         elif value[1] < 0.2:
-            self.motor_recommendation = ['L', 8]
+            self.motor_recommendation = ['L', 10]
             self.match_degree = 0.7
         elif value[-1] < 0.2:
-            self.motor_recommendation = ['R', 15]
+            self.motor_recommendation = ['R', 17]
         elif value[-2] < 0.2:
-            self.motor_recommendation = ['R', 8]
+            self.motor_recommendation = ['R', 10]
             self.match_degree = 0.7
-        else:
-            self.motor_recommendation = ['B', 0]
+        # else:
+        #     self.motor_recommendation = ['B', 0]

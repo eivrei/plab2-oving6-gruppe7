@@ -15,10 +15,8 @@ class Motob:
 
     def operationalize(self):
         motor = Motors()
-        print(self.value)
         if self.value[0] == "T":
             motor.backward(0.3, 0.2)
-            print(self.time_per_degree*self.value[1])
             motor.right(0.5, self.time_per_degree * self.value[1])
         elif self.value[0] == "L":
             motor.left(0.5, self.time_per_degree * self.value[1])
@@ -27,9 +25,9 @@ class Motob:
             motor.right(0.5, self.time_per_degree * self.value[1])
             # motor.set_value([.3, .1], self.time_per_degree * self.value[1])
         elif self.value[0] == "F":
-            motor.forward(0.3, 0.25)
+            motor.forward(0.3, 0.15)
         elif self.value[0] == 'B':
-            motor.backward(0.3, 0.4)
+            motor.backward(0.3, 0.3)
 
         # self.motor.left(0.5, self.time_per_degree * 180)
         # self.motor.right(0.5, self.time_per_degree * 180)

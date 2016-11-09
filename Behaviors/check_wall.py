@@ -20,7 +20,7 @@ class CheckWall(behavior.Behavior):
             self.halt_request = True
             self.motor_recommendation = ['S', 0]
         else:
-            self.motor_recommendation = ['T', 160]
+            self.motor_recommendation = ['T', 165]
         self.match_degree = 1
 
     def get_main_color(self, img):
